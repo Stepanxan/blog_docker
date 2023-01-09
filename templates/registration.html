@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Реєстрація
+{% endblock %}
+
+{% block body %}
+<header>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/registration.css') }}">
+</header>
+<body>
+  {{ super() }}
+  {% for cat, msg in get_flashed_messages(True) %}
+  <div class="flash {{cat}}">{{msg}}</div>
+  {% endfor %}
+  <form action="/registration" method="post">
+
+    <div class="conteiner">
+      <div class="card">
+        <h3>Registration</h3>
+        <div class="inputBox">
+          <input type="text" name="first_name" id="first_name" required="required">
+          <span> First name </span>
+        </div>
+
+        <div class="inputBox">
+          <input type="text" name="last_name" id="last_name" required="required">
+          <span> Last name </span>
+        </div>
+
+        <div class="inputBox">
+          <input type="text" name="email" id="email" required="required">
+          <span> Email </span>
+        </div>
+
+        <div class="inputBox">
+          <input type="password" name="password" id="password" required="required">
+          <span> Password </span>
+        </div>
+
+        <div class="inputBox">
+          <input type="password" name="password2" id="password2" required="required">
+          <span> Repeat password </span>
+        </div>
+
+        <button type='submit' class="button" >Registration</button>
+
+
+      </div>
+    </div>
+  </form>
+
+</body>
+{% endblock %}

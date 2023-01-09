@@ -1,0 +1,28 @@
+{% extends 'base_for_user.html' %}
+
+{% block title %}
+User_id:{{user_id}}
+{% endblock %}
+
+{% block body %}
+<head>
+  <link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='/css/user_page.css' )}}">
+</head>
+<body>
+  <form action="/users/{{user_id}}" method="get">
+    <div id="You_id">
+      <p>Вітаннячка {{ name.first_name }}</p>
+    </div>
+  </form>
+  <div>
+    <div id="user_page_flash" class="flash_massage">
+    {{ super() }}
+    {% for cat, msg in get_flashed_messages(True) %}
+    <div class="flash {{cat}}">{{msg}}</div>
+    {% endfor %}
+    </div>
+  </div>
+
+</body>
+{% endblock %}
+<code></code>

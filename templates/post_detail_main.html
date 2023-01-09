@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Деталі поста {{detail.topic}}
+{% endblock %}
+
+{% block body %}
+<head>
+  <link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='/css/main.css')}}">
+</head>
+<body>
+  <div >
+    <div id="my_post_flash" class="flash_massage">
+    {{ super() }}
+    {% for cat, msg in get_flashed_messages(True) %}
+    <div class="flash {{cat}}">{{msg}}</div>
+    {% endfor %}
+    </div>
+  </div>
+  <form action="/post:{{post_id}}" method="get">
+    <div>
+        <div class="">
+          <p id="categor_post_detail">Категорія поста: {{ detail.categor}}</p>
+          <p id="topic_post_detail">Тема: {{ detail.topic}}</p>
+          <p id="text_post_detail">{{ detail.text}}</p>
+          <p id="date_post_detail_main">Дата створення: {{ detail.date_add}}</p>
+        </div>
+    </div>
+  </form>
+</body>
+{% endblock %}

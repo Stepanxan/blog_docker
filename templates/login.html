@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Вхід
+{% endblock %}
+
+{% block body %}
+<header>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/registration.css') }}">
+</header>
+<body>
+
+<form action="/users/exit" method="post">
+  {{ super() }}
+  {% for cat, msg in get_flashed_messages(True) %}
+  <div class="flash {{cat}}">{{msg}}</div>
+  {% endfor %}
+      <div>
+      </div>
+        <div class="conteiner">
+          <div class="card">
+            <h3>Sing Up</h3>
+            <div class="inputBox">
+              <input type="email" id="email" name="email" required="required">
+              <span> Login </span>
+            </div>
+
+            <div class="inputBox">
+              <input type="password" id="password" name="password" required="required">
+              <span> Password </span>
+            </div>
+
+            <button type='submit'>Sing Up</button>
+
+
+
+          </div>
+        </div>
+</form>
+
+</body>
+{% endblock %}

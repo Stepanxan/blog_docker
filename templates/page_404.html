@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Сторінку не знайдено
+{% endblock %}
+
+{% block body %}
+
+<head>
+  <link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='/css/main.css')}}">
+  <h1>Сторінку не знайдено</h1>
+</head>
+<body>
+  <p>Сторінку не знайдено. Повернутись на <a href="/" >головну</a> сторінку</p>
+</body>
+
+{% endblock %}

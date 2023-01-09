@@ -1,0 +1,39 @@
+{% extends 'base_for_user.html' %}
+
+{% block title %}
+Створення поста
+{% endblock %}
+
+{% block body %}
+<head>
+  <link rel="stylesheet" type="text/css" href="{{ url_for( 'static', filename='/css/user_page.css')}}">
+
+</head>
+<body>
+  <div id="flash_create" class="flash_massage">
+      {{ super() }}
+    {% for cat, msg in get_flashed_messages(True) %}
+    <div class="flash {{cat}}">{{msg}}</div>
+    {% endfor %}
+  </div>
+  <form action="/users/create-post" method="post" class="" >
+    <p id="update_post">Новий пост</p>
+    <div>
+      <form>
+        <select name="categor" class="select" required >
+          <option disabled selected>Виберіть категорію</option>
+          <option value="Про хуйла">Про хуйла</option>
+          <option value="Про картопляного барона">Про картопляного барона</option>
+          <option value="Про щокатого корейця">Про щокатого корейця</option>
+          <option value="Про генератори">Про генератори</option>
+        </select>
+      </form>
+      <input type="text" class="textarea" id="topic_post_update" name="topic" required maxlength="50" placeholder="Введіть тему(максимум 50 символів)"></<input>
+      <textarea type="text" id="text_post_update" id="text" name="text" required="" placeholder=" Введіть текст поста" ></textarea>
+
+      <input type='submit' class="button" value="Запостити">
+    </div>
+  </form>
+</body>
+
+{% endblock %}

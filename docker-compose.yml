@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: ./web/python/DockerFile
+    container_name: 'app-web2'
+    volumes:
+      - .:/application
+    ports:
+      - "8081:8080"
+    depends_on:
+      - mysql
+    networks:
+      - app
+
+  mysql:
+    container_name: 'app_db'
+    image: mysql:8.0.27
+    volumes:
+      - ./web/data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: posttitle
+    ports:
+      - "3307:3306"
+    networks:
+      - app
+
+networks:
+  app:
+    driver: bridge
